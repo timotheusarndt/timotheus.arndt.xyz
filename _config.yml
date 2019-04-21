@@ -1,0 +1,37 @@
+# Site settings
+title: timotheus.arndt.xyz
+email: ""
+description: ""
+baseurl: ""
+url: "https://timotheus.arndt.xyz"
+
+# Build settings
+permalink: /:year/:month/:day/:title
+timezone: Europe/Berlin
+markdown: kramdown
+kramdown:
+  parse_block_html: true
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+# Publication settings
+scholar:
+  sort_by: year,month
+  order: descending
+  bibliography_template: bib
+  details_dir: publikationen
+  details_layout: bibtex.html
+  details_link: More
+  bibtex_skip_fields:
+    - abstract
+    - month_numeric
+    - _type
+    - _slides
+    - _poster
+    - _video
+    - _highlighted
