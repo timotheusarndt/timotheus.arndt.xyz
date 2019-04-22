@@ -21,17 +21,14 @@ exclude:
   - package-lock.json
 # Publication settings
 scholar:
+  source: _bibliography
+  bibliography: references.bib
   sort_by: year,month
+  locale: de
   order: descending
   bibliography_template: bib
   details_dir: publikationen
   details_layout: bibtex.html
-  details_link: More
+  details_link: Details
   bibtex_skip_fields:
     - abstract
-    - month_numeric
-    - _type
-    - _slides
-    - _poster
-    - _video
-    - _highlighted

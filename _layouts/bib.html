@@ -1,20 +1,22 @@
 ---
 ---
 
-<div class="publication" itemscope itemtype="http://schema.org/ScholarlyArticle">
-  <span class="type">{{ entry._type }}</span>
-  <a href="/publikationen/{{ entry.key }}" class="title"><span itemprop="name">{{ entry.title }}</span></a><br />
-  {% assign first = true %}
-  <span class="authors">{% for author in entry.author_array %}{% if first == false %},{% endif %}
-  {% assign first = false %}
-  {% capture name %}{{ author.first }} {{ author.prefix }} {{ author.last }}{% endcapture %}
-  {% assign name = name | replace: "  ", " " %}
-  {% assign knows = site.data.knows[name] %}
-  <span itemprop="author">{{ name }}</span>{% endfor %}</span><br />
-  {% if entry.booktitle %}
+<div class="publication" itemscope itemtype="http://schema.org/ScholarlyArticle" class="{{ entry.type }}">
+  <strong itemprop="name">{{ entry.title }}</strong><br />
+  <span class="authors">
+    {%- for author in entry.author_array -%}
+    {% capture name %}{{ author.first }} {{ author.prefix }} {{ author.last }}{% endcapture %}
+    {% assign name = name | replace: "  ", " " | strip %}
+    <span itemprop="author">{{ name }}</span>
+    {%- unless forloop.last %}, {% endunless -%}
+    {% endfor %}
+  </span><br />
+  {%- if entry.booktitle -%}
   <span class="in">In {{ entry.booktitle }}</span>
-  {% endif %}
-  {% if entry.journal %}
+  {%- endif -%}
+  {%- if entry.journal -%}
   <span class="in">In {{ entry.journal }}</span>
-  {% endif %}
+  {%- endif -%}
+  {%- if entry.booktitle or entry.journal %}, {% endif -%}
+  {{ entry.year }}
 </div>
